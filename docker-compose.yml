@@ -2,7 +2,5 @@ version: '3.8'
 services:
   app:
     build: .
-    volumes:
-      - ./pos.db:/app/pos.db # Persiste la base en dehors du conteneur (optionnel)
     stdin_open: true
     tty: true
