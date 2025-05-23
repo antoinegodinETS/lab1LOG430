@@ -24,13 +24,31 @@ def menu():
             pass
         elif choix == "2":
             produits = lister_produits()
-            table = [[p.id, p.nom, p.categorie, p.prix, p.stock] for p in produits]
-            print(tabulate(table, headers=["ID", "Nom", "Catégorie", "Prix", "Stock"]))
+            table = [[p.id, p.nom, p.categorie, p.prix, p.stock]
+                     for p in produits]
+            print(
+                tabulate(
+                    table,
+                    headers=[
+                        "ID",
+                        "Nom",
+                        "Catégorie",
+                        "Prix",
+                        "Stock"]))
             pass
         elif choix == "3":
             produits = lister_produits()
-            table = [[p.id, p.nom, p.categorie, p.prix, p.stock] for p in produits]
-            print(tabulate(table, headers=["ID", "Nom", "Catégorie", "Prix", "Stock"]))
+            table = [[p.id, p.nom, p.categorie, p.prix, p.stock]
+                     for p in produits]
+            print(
+                tabulate(
+                    table,
+                    headers=[
+                        "ID",
+                        "Nom",
+                        "Catégorie",
+                        "Prix",
+                        "Stock"]))
             print("Entrer les articles (ID et quantité), vide pour terminer.")
             articles = []
             while True:
@@ -50,11 +68,20 @@ def menu():
             print(msg)
         elif choix == "4":
             ventes = lister_ventes()
-            table = [
-                [v.id, v.date.strftime('%Y-%m-%d %H:%M:%S'), v.total, v.caisse, "Oui" if v.annulee else "Non"]
-                for v in ventes
-            ]
-            print(tabulate(table, headers=["ID", "Date", "Total", "Caisse", "Annulée"]))
+            table = [[v.id,
+                      v.date.strftime('%Y-%m-%d %H:%M:%S'),
+                      v.total,
+                      v.caisse,
+                      "Oui" if v.annulee else "Non"] for v in ventes]
+            print(
+                tabulate(
+                    table,
+                    headers=[
+                        "ID",
+                        "Date",
+                        "Total",
+                        "Caisse",
+                        "Annulée"]))
         elif choix == "5":
             vente_id = input("ID de la vente à annuler : ")
             try:
@@ -68,6 +95,7 @@ def menu():
             break
         else:
             print("Choix invalide.")
+
 
 if __name__ == "__main__":
     init_db()

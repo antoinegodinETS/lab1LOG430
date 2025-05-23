@@ -2,6 +2,7 @@ from db import SessionLocal
 from models import Produit, Vente, VenteLigne
 import datetime
 
+
 def enregistrer_vente(articles, caisse_num):
     """
     articles = liste de tuples (produit_id, quantite)
@@ -24,7 +25,11 @@ def enregistrer_vente(articles, caisse_num):
         sous_total = produit.prix * quantite
         total += sous_total
         produit.stock -= quantite
-        ligne = VenteLigne(vente_id=vente.id, produit_id=produit.id, quantite=quantite, sous_total=sous_total)
+        ligne = VenteLigne(
+            vente_id=vente.id,
+            produit_id=produit.id,
+            quantite=quantite,
+            sous_total=sous_total)
         session.add(ligne)
 
     vente.total = total
@@ -40,11 +45,13 @@ def ajouter_produit(nom, categorie, prix, stock):
     session.commit()
     session.close()
 
+
 def lister_ventes():
     session = SessionLocal()
     ventes = session.query(Vente).all()
     session.close()
     return ventes
+
 
 def annuler_vente(vente_id):
     session = SessionLocal()
@@ -63,6 +70,7 @@ def annuler_vente(vente_id):
     session.commit()
     session.close()
     return True, f"Vente {vente_id} annulée et stock remis à jour."
+
 
 def lister_produits():
     session = SessionLocal()

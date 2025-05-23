@@ -4,6 +4,7 @@ import datetime
 
 Base = declarative_base()
 
+
 class Produit(Base):
     __tablename__ = 'produits'
     id = Column(Integer, primary_key=True)
@@ -11,6 +12,7 @@ class Produit(Base):
     categorie = Column(String, nullable=False)
     prix = Column(Float, nullable=False)
     stock = Column(Integer, nullable=False)
+
 
 class Vente(Base):
     __tablename__ = 'ventes'
@@ -20,6 +22,7 @@ class Vente(Base):
     caisse = Column(Integer, nullable=False)
     annulee = Column(Boolean, default=False)   # <-- AJOUT ICI
     lignes = relationship("VenteLigne", back_populates="vente")
+
 
 class VenteLigne(Base):
     __tablename__ = 'ventes_lignes'
