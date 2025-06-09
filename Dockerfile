@@ -12,3 +12,4 @@ COPY src/ src/
 
 # Par défaut, lance le programme principal
 CMD ["python", "src/main.py"]
+
